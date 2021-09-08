@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Marky</string>
+    <string name="editor">Editor</string>
+    <string name="preview">Preview</string>
 </resources>
