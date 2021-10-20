@@ -7,19 +7,19 @@ import androidx.lifecycle.MutableLiveData
 
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _editorMode = MutableLiveData<Int>(Mode.EDITOR)
-    val editorMode : LiveData<Int> = _editorMode
+    private val _editorMode = MutableLiveData<Mode>(Editor)
+    val editorMode : LiveData<Mode> = _editorMode
 
 
     val content = MutableLiveData<String>("")
 
 
     fun changeToEditor(){
-        _editorMode.value = Mode.EDITOR
+        _editorMode.value = Editor
     }
 
     fun changeToPreview(){
-        _editorMode.value = Mode.PREVIEW
+        _editorMode.value = Preview
 
     }
 
