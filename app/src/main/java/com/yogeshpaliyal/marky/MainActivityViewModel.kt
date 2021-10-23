@@ -14,12 +14,9 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     val content = MutableLiveData<String>("")
 
 
-    fun changeToEditor(){
-        _editorMode.value = Editor
-    }
 
-    fun changeToPreview(){
-        _editorMode.value = Preview
+    fun changeMode(mode: Mode){
+        _editorMode.value = mode
 
     }
 

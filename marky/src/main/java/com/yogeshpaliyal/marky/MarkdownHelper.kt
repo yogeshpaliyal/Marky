@@ -2,9 +2,7 @@ package com.yogeshpaliyal.marky
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.Colors
@@ -103,7 +101,7 @@ fun MDParagraph(paragraph: Paragraph) {
 @Composable
 fun MDImage(image: Image) {
     Box(modifier = Modifier.fillMaxWidth()) {
-        Image(rememberImagePainter(image.destination),"")
+        Image(rememberImagePainter(image.destination), "")
     }
 }
 
@@ -140,7 +138,7 @@ fun MDOrderedList(orderedList: OrderedList) {
 fun MDListItems(listBlock: ListBlock, item: @Composable (node: Node) -> Unit) {
     val bottom = if (listBlock.parent is Document) 8.dp else 0.dp
     val start = if (listBlock.parent is Document) 0.dp else 8.dp
-    Box(modifier = Modifier.padding(bottom = bottom, start = start)) {
+    Column(modifier = Modifier.padding(bottom = bottom, start = start)) {
         var listItem = listBlock.firstChild
         while (listItem != null) {
             var child = listItem.firstChild
@@ -160,14 +158,16 @@ fun MDListItems(listBlock: ListBlock, item: @Composable (node: Node) -> Unit) {
 @Composable
 fun MDBlockQuote(blockQuote: BlockQuote) {
     val color = MaterialTheme.colors.onBackground
-    Box(modifier = Modifier.drawBehind {
-        drawLine(
-            color = color,
-            strokeWidth = 2f,
-            start = Offset(12.dp.value, 0f),
-            end = Offset(12.dp.value, size.height)
-        )
-    }.padding(start = 16.dp, top = 4.dp, bottom = 4.dp)) {
+    Box(modifier = Modifier
+        .drawBehind {
+            drawLine(
+                color = color,
+                strokeWidth = 2f,
+                start = Offset(12.dp.value, 0f),
+                end = Offset(12.dp.value, size.height)
+            )
+        }
+        .padding(start = 16.dp, top = 4.dp, bottom = 4.dp)) {
         val text = buildAnnotatedString {
             pushStyle(
                 MaterialTheme.typography.body1.toSpanStyle()
@@ -203,21 +203,23 @@ fun MDThematicBreak(thematicBreak: ThematicBreak) {
 
 @Composable
 fun MDBlockChildren(parent: Node) {
-    var child = parent.firstChild
-    while (child != null) {
-        when (child) {
-            is Document -> MDDocument(child)
-            is BlockQuote -> MDBlockQuote(child)
-            is ThematicBreak -> MDThematicBreak(child)
-            is Heading -> MDHeading(child)
-            is Paragraph -> MDParagraph(child)
-            is FencedCodeBlock -> MDFencedCodeBlock(child)
-            is IndentedCodeBlock -> MDIndentedCodeBlock(child)
-            is Image -> MDImage(child)
-            is BulletList -> MDBulletList(child)
-            is OrderedList -> MDOrderedList(child)
+    Column() {
+        var child = parent.firstChild
+        while (child != null) {
+            when (child) {
+                is Document -> MDDocument(child)
+                is BlockQuote -> MDBlockQuote(child)
+                is ThematicBreak -> MDThematicBreak(child)
+                is Heading -> MDHeading(child)
+                is Paragraph -> MDParagraph(child)
+                is FencedCodeBlock -> MDFencedCodeBlock(child)
+                is IndentedCodeBlock -> MDIndentedCodeBlock(child)
+                is Image -> MDImage(child)
+                is BulletList -> MDBulletList(child)
+                is OrderedList -> MDOrderedList(child)
+            }
+            child = child.next
         }
-        child = child.next
     }
 
 }
@@ -318,7 +320,7 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
                     placeholderVerticalAlign = PlaceholderVerticalAlign.Bottom
                 )
             ) {
-                Image(rememberImagePainter(it),"", alignment = Alignment.Center)
+                Image(rememberImagePainter(it), "", alignment = Alignment.Center)
             }
         ),
         onTextLayout = { layoutResult.value = it }
