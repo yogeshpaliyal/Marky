@@ -12,9 +12,10 @@
 
 ### Screenshots
 #### Light
-|Editor|Preview|
-|---|---|
-|![Editor](https://github.com/yogeshpaliyal/Marky/blob/b49cd546ffbf8ae96bdbdb2b690b28da752cfaa1/images/marky-editor-light.png) | ![Preview](https://github.com/yogeshpaliyal/Marky/blob/b49cd546ffbf8ae96bdbdb2b690b28da752cfaa1/images/marky-preview-light.png)|  
+<div style="display: inline-block"  align="start">
+  <img src="https://github.com/yogeshpaliyal/Marky/blob/b49cd546ffbf8ae96bdbdb2b690b28da752cfaa1/images/marky-editor-light.png" width="20%" alt="Editor"> 
+  <img src="https://github.com/yogeshpaliyal/Marky/blob/b49cd546ffbf8ae96bdbdb2b690b28da752cfaa1/images/marky-preview-light.png" width="20%" alt="Preview">
+</div>
 
 
 #### Dark (Coming soon)
@@ -66,7 +67,7 @@ Give a ⭐️ if this project helped you!
 
 ## ☑️ TODO
 
-- [ ] Task 1
+- [ ] Add Dark mode support
 
 ## 📝 License
 
