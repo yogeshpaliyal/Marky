@@ -1,6 +1,13 @@
 ![](cover.jpeg)
 
-# Marky
+<div style="display: inline-block"  align="center">
+<h1>Marky</h1>
+<p>
+<a href="https://github.com/yogeshpaliyal/Marky/releases/download/latest-master/app-staging-debug.apk">
+<img src="https://img.shields.io/badge/Master-master?color=7885FF&label=Sample%20App&logo=android&style=for-the-badge" alt="Master Sample App">
+</a>
+</p>
+</div>
 
 ![buildStatus](https://img.shields.io/github/workflow/status/yogeshpaliyal/Marky/Java%20CI%20with%20Gradle?style=plastic)
 ![latestVersion](https://img.shields.io/github/v/release/yogeshpaliyal/Marky)
